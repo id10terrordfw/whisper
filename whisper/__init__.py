@@ -96,7 +96,7 @@ def available_models() -> List[str]:
 
 def load_model(
     name: str,
-    device: Optional[Union[str, torch.device]] = None,
+    device: Optional[Union[str, torch.device]] = cpu,
     download_root: str = None,
     in_memory: bool = False,
 ) -> Whisper:
