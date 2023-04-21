@@ -96,7 +96,7 @@ def available_models() -> List[str]:
 
 def load_model(
     name: str,
-    device: Optional[Union[str, torch.device]] = cpu,
+    device: Optional[Union[str, torch.device]] = None,
     download_root: str = None,
     in_memory: bool = False,
 ) -> Whisper:
@@ -122,7 +122,7 @@ def load_model(
     """
 
     if device is None:
-        device = "cuda" if torch.cuda.is_available() else "cpu"
+        device = "cpu" if torch.cuda.is_available() else "cpu"
     if download_root is None:
         default = os.path.join(os.path.expanduser("~"), ".cache")
         download_root = os.path.join(os.getenv("XDG_CACHE_HOME", default), "whisper")
